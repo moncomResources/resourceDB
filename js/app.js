@@ -11,6 +11,11 @@ let contentMain = function() {
   const main = document.getElementById("main");
   return main;
 };
+//Function to return to top of page
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
 
 //function to load resourcelist template
 let subcategoryLinkClick = function() {
@@ -61,6 +66,7 @@ let subcategoryLinkClick = function() {
   const compiledHtml = resourceListTemplate(resourcesArray);
   main.innerHTML = compiledHtml;
   resourceClick();
+  topFunction();
 };
 //Event listener for resource link
 let resourceClick = function() {
@@ -81,6 +87,7 @@ let resourceLinkClick = function() {
   const resourceTemplate = Handlebars.compile(source);
   const compiledHtml = resourceTemplate(resource);
   main.innerHTML = compiledHtml;
+  topFunction();
 };
 
 //Event listener for subcategoryLink
@@ -102,6 +109,7 @@ let buttonClick = function() {
   const compiledHtml = subcategoryTemplate(categories.category[categoryIndex]);
   main.innerHTML = compiledHtml;
   subCategoryClick();
+  topFunction();
 };
 
 //Category Button event listeners
@@ -121,6 +129,7 @@ let categoryTempLoad = function() {
   let main = contentMain();
   main.innerHTML = compiledHtml;
   categoryButtonListeners();
+  topFunction();
 };
 
 let categoryNav = document.getElementById("category-nav");
