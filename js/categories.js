@@ -38,7 +38,9 @@ var categories = {
           subid: "2"
         }
       ],
-      img: "images/noun_Blind_1545498.png"
+      img: "images/disabilities.png",
+      description:
+        "This category covers a broad scope of services, supports, and referrals for our clients who experience a disAbility.  Here you can find resources related to learning challenges and special education, parent and family support, specialized summer camps and activities, legal and social advocacy, physical disAbilities, testing referrals, and much more."
     },
     {
       id: "1",
@@ -61,7 +63,8 @@ var categories = {
           subid: "3"
         }
       ],
-      img: "images/noun_transgender_2431636.png"
+      img: "images/transgender.png",
+      description: ""
     },
     {
       id: "2",
@@ -76,7 +79,8 @@ var categories = {
           subid: "1"
         }
       ],
-      img: "images/noun_Food_2676287.png"
+      img: "images/food.png",
+      description: ""
     },
     {
       id: "3",
@@ -99,7 +103,8 @@ var categories = {
           subid: "3"
         }
       ],
-      img: "images/noun_School_1018553.png"
+      img: "images/school.png",
+      description: ""
     },
     {
       id: "4",
@@ -114,7 +119,8 @@ var categories = {
           subid: "1"
         }
       ],
-      img: "images/noun_Sports_420849.png"
+      img: "images/sports.png",
+      description: ""
     }
   ]
 };
