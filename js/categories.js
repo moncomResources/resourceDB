@@ -23,7 +23,7 @@ var categories = {
   category: [
     {
       id: "0",
-      title: "Disabilities",
+      title: "DisAbilities",
       subcategories: [
         {
           subcategory: "subcategory1",

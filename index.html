@@ -18,16 +18,12 @@
     <script id="categoriesTemp" type="text/x-handlebars-template">
       <section class="category-desc mx-auto">
         <div class="mx-auto my-5" >
-          <h1 class="text-center">Monroe Community Resource Database</h1>
+          <h1 class="text-center m-bottom-4">Monroe Community Resource Database</h1>
+          <h3 class="mt-5">What is the database?</h3>
           <p class="my-4">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint voluptate
-            quia minima sunt quasi maiores dolor sit minus dolorem voluptates
-            ratione nostrum nemo facilis, voluptatem itaque vero saepe doloremque
-            reiciendis! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Voluptatum commodi saepe sapiente, eligendi obcaecati fuga voluptate.
-            Quis soluta repellat quaerat commodi laboriosam, doloremque odio, eos
-            aliquam, reprehenderit modi eum earum.
+              Welcome to the Monroe Community Resources Database!  This is a collection of local and nearby resources tailored to meet the needs of the clients we serve.  The database is dynamic so as resources change over time, the database can be updated to reflect current information.  As you learn about new services in the community, they can be vetted and added, too!
           </p>
+          <p>The intention behind creating this database is to help our team more efficiently find relevant community services and referrals for our clients and then effectively connect clients with the resource.  No more googling and finding awesome resources located in the other Washington or scouring your file cabinet for brochures and business cards: now you can quickly search the database even with a client in session or over the phone and share the information right away.</p>
         </div>
         <div class="container-fluid my-5">
           <h2 class="resource-title">Resource Categories:</h2>
@@ -46,6 +42,11 @@
               </button>
             </div>
             {{/each}}
+            <div class="mx-auto my-5">
+              <h3>HOW TO USE IT</h3>
+              <p>There are a variety of ways to navigate the database.  Each resource is categorized and tagged: you can browse categories and subcategories or search via organization title and/or tag.  Take a few moments to peruse the categories and familiarize yourself with what is readily available to you.</p>
+              <p>One helpful feature is as you browse or search for a resource, the database will suggest other similar resources that may also be of interest.  This will help you quickly provide a variety of service options to clients and increase a sense of hope and support.</p>
+            </div>
             </div>
             </div>
           </section>
@@ -182,6 +183,26 @@
 
       </div>
     </script>
+    <script id="creditsTemplate" type="text/x-handlebars-template">
+      <section class="category-desc mx-auto">
+          <div class="mx-auto my-5" >
+              <h1 class="text-center">Image/Icon Credits</h1>
+              <p class="my-4">
+                Images/Icons used in the Community Resource Database are credited as:
+              </p>
+            </div>
+            <div class="container container-fluid">
+              <div class="row">
+                {{# each icons}}
+                <div class="col col-sm-3">
+                  <img src={{this.filename}} alt="Blind person with cane" width="200px">
+                </div>
+                {{/ each}}
+
+              </div>
+            </div>
+      </<section>
+    </script>
     <title>Community Resource Database</title>
   </head>
   <body style="width:100%">
@@ -210,6 +231,9 @@
               <a class="nav-link" href="#" id="tag-nav"
                 >Tags <span class="sr-only"></span
               ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="credits-nav" href="#">Credits</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">

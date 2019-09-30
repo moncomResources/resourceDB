@@ -68,6 +68,31 @@ let subcategoryLinkClick = function() {
   resourceClick();
   topFunction();
 };
+
+//Credits Template Load
+let creditsTempLoad = function() {
+  clearMain();
+  let main = contentMain();
+  console.log("test");
+  let credits = {
+    icons: [
+      {
+        filename: "images/noun_Blind_1545498.png"
+      },
+      { filename: "images/noun_Food_2676287.png" },
+      { filename: "images/noun_School_1018553.png" },
+      { filename: "images/noun_Sports_420849.png" },
+      { filename: "images/noun_transgender_2431636.png" }
+    ]
+  };
+  console.log(credits);
+
+  const source = document.getElementById("creditsTemplate").innerHTML;
+  const creditsTemplate = Handlebars.compile(source);
+  const compiledHtml = creditsTemplate(credits);
+  main.innerHTML = compiledHtml;
+};
+
 //Event listener for resource link
 let resourceClick = function() {
   let resourceLink = document.querySelectorAll(".resource-link");
@@ -166,5 +191,8 @@ let TagListTempLoad = function() {
 
 let tagNav = document.getElementById("tag-nav");
 tagNav.addEventListener("click", TagListTempLoad);
+
+let creditsNav = document.getElementById("credits-nav");
+creditsNav.addEventListener("click", creditsTempLoad);
 
 categoryTempLoad();
