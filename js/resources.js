@@ -158,7 +158,7 @@ var resources = {
         "Special education resources categorized in four sections: general special education resources, dispute resolution information, lawyer referrals, specialized education resources.", //brief description
       website:
         "https://www.disabilityrightswa.org/publications/special-education-resources/", //url to website
-      image: "images/disabilityrights.png", //filepath to logo or representative image
+      image: "images/disabilityrights.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
