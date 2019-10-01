@@ -104,7 +104,7 @@ var resources = {
       description:
         "Dedicated to empowering people with disabilities through technology and education. Promotes awareness and accessibility—in both the classroom and the workplace—to maximize the potential of individuals with disabilities and make our communities more vibrant, diverse, and inclusive. Promotes application of Universal Design to physical space, IT, instruction and services; provide resources for students with disabilities, K-12 educators, parents, mentors, faculty, and administrators; freely distribute online content and work to increase the success of people with disabilities in challenging academic programs and careers.", //brief description
       website: "https://www.washington.edu/doit/", //url to website
-      image: "images/doit.png", //filepath to logo or representative image
+      image: "images/doit.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -137,7 +137,7 @@ var resources = {
         "WAAA provides a range of advocacy services to help adults, youth, and children with Autism Spectrum Disorder (ASD) and other developmental disabilities throughout the State of Washington gain access to health and educational services and supports that they need. These services include: family resource and insurance navigation and legal advocacy on issues related to access to healthcare and education. Offer sliding scale legal fees and help with education planning.", //brief description
       website:
         "https://www.washingtonautismadvocacy.org/updates/advocacy-resource-coordinators/", //url to website
-      image: "images/waaa.png", //filepath to logo or representative image
+      image: "images/waaa.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "local phone number",
@@ -183,7 +183,7 @@ var resources = {
         "Information about and application for SSI disability benefits for children.  Printable booklet and checklists available.", //brief description
       website:
         "https://www.ssa.gov/disability/disability_starter_kits_child_eng.htm", //url to website
-      image: "images/socialsecurity.png", //filepath to logo or representative image
+      image: "images/socialsecurity.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -203,7 +203,7 @@ var resources = {
       description:
         "Eligibility information for special services, family and individual supports, service provider information, respite services, employment and independence skills help.", //brief description
       website: "https://www.dshs.wa.gov/dda", //url to website
-      image: "images/wsdsh.png", //filepath to logo or representative image
+      image: "images/wsdsh.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -227,7 +227,7 @@ var resources = {
       description:
         "Informing Families is a resource provided by the Washington State Developmental Disabilities Council, in collaboration with the Developmental Disabilities Administration and other partners throughout the state. We offer trusted news and information to individuals and families that empowers them to be active participants in planning and building a network of support and opportunities. Specific services include: Developmentally-appropriate intervention and skills information for children with disabilities from birth-adulthood; caregiver support; disability advocacy; information on applying for DDA services and a resource folder; help with assistive technology; guardianship and future/financial planning.", //brief description
       website: "https://informingfamilies.org/", //url to website
-      image: "images/informingfamilies.png", //filepath to logo or representative image
+      image: "images/informingfamilies.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "1-800-number",
@@ -251,7 +251,7 @@ var resources = {
       description:
         "Provides public policy recommendations, works to address service gaps, provides disability advocacy, schedules council meetings, advises Governor.", //brief description
       website: "https://ddc.wa.gov/", //url to website
-      image: "images/waddc.png", //filepath to logo or representative image
+      image: "images/waddc.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -271,7 +271,7 @@ var resources = {
       description:
         "Register athletes, develop leadership skills, compete in different sports, community connections and support.", //brief description
       website: "http://specialolympicswashington.org/", //url to website
-      image: "images/specialolympicswa.png", //filepath to logo or representative image
+      image: "images/specialolympicswa.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -292,7 +292,7 @@ var resources = {
       description:
         "National youth-led information, training, and resource center; youth leadership development; independent living skill development and support; training development, disability policy analysis. ", //brief description
       website: "http://ncld-youth.info/index.php?id=19", //url to website
-      image: "images/ncldyouth.png", //filepath to logo or representative image
+      image: "images/ncldyouth.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
@@ -316,7 +316,7 @@ var resources = {
       description:
         "Project of Disability Rights WA: creates and promotes authenic accessible stories to challenge stigma and redefine narratives around disability, mental health, chronic illness; develop and share stories made by those with disabilities. ", //brief description
       website: "https://rootedinrights.org/", //url to website
-      image: "images/rooted.png", //filepath to logo or representative image
+      image: "images/rooted.PNG", //filepath to logo or representative image
       contact: [], //array of objects for different contact types
       location: "", //general location
       hierarchy: ["00"],
@@ -331,7 +331,7 @@ var resources = {
       description:
         "Assessment, diagnosis, treatment, support for ASD; parent education and support; medication management, pediatric feeding program, speech & language assessment, genetic consultation clinic; referral information and insurance information.", //brief description
       website: "https://www.seattlechildrens.org/clinics/autism-center/", //url to website
-      image: "images/seattlechildrens.png", //filepath to logo or representative image
+      image: "images/seattlechildrens.PNG", //filepath to logo or representative image
       contact: [
         {
           contactType: "phone number",
