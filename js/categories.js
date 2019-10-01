@@ -26,15 +26,15 @@ var categories = {
       title: "DisAbilities",
       subcategories: [
         {
-          subcategory: "subcategory1",
+          subcategory: "Autism Spectrum",
           subid: "0"
         },
         {
-          subcategory: "subcategory2",
+          subcategory: "Special Education",
           subid: "1"
         },
         {
-          subcategory: "subcategory5",
+          subcategory: "Physical DisAbilities",
           subid: "2"
         }
       ],
