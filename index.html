@@ -146,7 +146,9 @@
       <div class="container-fluid">
         <div class="row my-5">
           <div class="col col-sm-4">
-            <figure><img src="{{this.image}}" alt="Organization logo" height="200px" width="200px" class="d-block mx-auto"></figure>
+
+            <figure><img src="{{this.image}}" alt="Organization logo"class="d-block mx-auto image-fit"></figure>
+
           </div>
           <div class="col col-sm-8">
             <h1>{{this.organization}}</h1>
@@ -170,8 +172,8 @@
               </tbody>
              </table>
              <p><span class="bold">tags:</span>
-              {{#each tag}}
-                <span>{{this.tag}}</span>
+              {{#each tags}}
+                <span>{{this}}</span>
               {{/each}}
             </p>
           </div>

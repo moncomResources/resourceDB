@@ -50,3 +50,7 @@ button {
 .bold {
   font-weight: bold;
 }
+
+.image-fit {
+  object-fit: cover;
+}
