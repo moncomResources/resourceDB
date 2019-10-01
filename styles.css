@@ -54,3 +54,7 @@ button {
 .image-fit {
   object-fit: cover;
 }
+
+.footer-container {
+  width: 80%;
+}
