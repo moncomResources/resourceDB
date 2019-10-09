@@ -100,7 +100,7 @@ var resources = {
     {
       id: "2", //int
       organization:
-        "Disabilities, Opportunities, Internetworking, &Technology Center (DO-IT)", //name of organization or title of project
+        "Disabilities, Opportunities, Internetworking, & Technology Center (DO-IT)", //name of organization or title of project
       description:
         "Dedicated to empowering people with disabilities through technology and education. Promotes awareness and accessibility—in both the classroom and the workplace—to maximize the potential of individuals with disabilities and make our communities more vibrant, diverse, and inclusive. Promotes application of Universal Design to physical space, IT, instruction and services; provide resources for students with disabilities, K-12 educators, parents, mentors, faculty, and administrators; freely distribute online content and work to increase the success of people with disabilities in challenging academic programs and careers.", //brief description
       website: "https://www.washington.edu/doit/", //url to website

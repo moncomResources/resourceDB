@@ -17,18 +17,34 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
+//Function to return CategoryID
+function findCategoryID(categoryName) {
+  let categoryID = "";
+  for (var i = 0; i < categories.category.length; i++) {
+    if (categories.category[i]["title"] == categoryName) {
+      categoryID = i;
+    }
+  }
+  return categoryID;
+}
+
+function findCategoryName(categoryID) {
+  let categoryName = "";
+  categoryName = categories.category[categoryID]["title"];
+
+  return categoryName;
+}
+
 //function to load resourcelist template
 let subcategoryLinkClick = function() {
   let categoryIndex = document.getElementById("id-value").innerHTML;
+
   let subID = parseInt(this.value);
   let category = categories.category[parseInt(categoryIndex)]["title"];
   let subcategory =
     categories.category[parseInt(categoryIndex)].subcategories[subID][
       "subcategory"
     ];
-
-  let main = contentMain();
-  clearMain();
 
   let resourcesArray = {
     resources: [],
@@ -60,11 +76,8 @@ let subcategoryLinkClick = function() {
       return 1;
     }
   });
-
-  const source = document.getElementById("resourceListPage").innerHTML;
-  const resourceListTemplate = Handlebars.compile(source);
-  const compiledHtml = resourceListTemplate(resourcesArray);
-  main.innerHTML = compiledHtml;
+  clearMain();
+  templateLoad("resourceListPage", resourcesArray);
   resourceClick();
   topFunction();
 };
@@ -73,7 +86,6 @@ let subcategoryLinkClick = function() {
 let creditsTempLoad = function() {
   clearMain();
   let main = contentMain();
-  console.log("test");
   let credits = {
     icons: [
       {
@@ -85,7 +97,6 @@ let creditsTempLoad = function() {
       { filename: "images/noun_transgender_2431636.png" }
     ]
   };
-  console.log(credits);
 
   const source = document.getElementById("creditsTemplate").innerHTML;
   const creditsTemplate = Handlebars.compile(source);
@@ -116,7 +127,7 @@ let resourceLinkClick = function() {
 };
 
 //Event listener for subcategoryLink
-let subCategoryClick = function() {
+let addSubCategoryListener = function() {
   let subcategoryLink = document.querySelectorAll(".subcategory-link");
   let subcategoryLinkLength = subcategoryLink.length;
   for (var i = 0; i < subcategoryLinkLength; i++) {
@@ -124,16 +135,11 @@ let subCategoryClick = function() {
   }
 };
 //Callback function for Category button click and loads subcategory template
-let buttonClick = function() {
+let categorySelection = function() {
   let categoryID = this.value;
-  let main = contentMain();
   clearMain();
-  let categoryIndex = categories.category.findIndex(x => x.id == categoryID);
-  const source = document.getElementById("subcategoryTemp").innerHTML;
-  const subcategoryTemplate = Handlebars.compile(source);
-  const compiledHtml = subcategoryTemplate(categories.category[categoryIndex]);
-  main.innerHTML = compiledHtml;
-  subCategoryClick();
+  templateLoad("subcategoryTemp", categories.category[categoryID]);
+  addSubCategoryListener();
   topFunction();
 };
 
@@ -142,23 +148,22 @@ let categoryButtonListeners = function() {
   categoryButton = document.querySelectorAll(".category");
   let categoryButtonLength = categoryButton.length;
   for (var i = 0; i < categoryButtonLength; i++) {
-    categoryButton[i].addEventListener("click", buttonClick);
+    categoryButton[i].addEventListener("click", categorySelection);
   }
 };
 
-//Category Template Load
-let categoryTempLoad = function() {
-  const source = document.getElementById("categoriesTemp").innerHTML;
-  const categoriesTemplate = Handlebars.compile(source);
-  const compiledHtml = categoriesTemplate(categories);
+//Handlebar Template loader function
+//Requires script ID tag and data
+let templateLoad = function(scriptID, data) {
+  const source = document.getElementById(scriptID).innerHTML;
+  const template = Handlebars.compile(source);
+  const compiledHtml = template(data);
   let main = contentMain();
   main.innerHTML = compiledHtml;
+  //Figure out how to remove this event listener
   categoryButtonListeners();
   topFunction();
 };
-
-let categoryNav = document.getElementById("category-nav");
-categoryNav.addEventListener("click", categoryTempLoad);
 
 let TagListTempLoad = function() {
   clearMain();
@@ -189,10 +194,55 @@ let TagListTempLoad = function() {
   main.innerHTML = compiledHtml;
 };
 
+/////////////////////////////////////////////////////////////////////////////
+//                 Event Listener Functions
+////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+//                 Nav bar links
+////////////////////////////////////////////////////////////////////////////
+
+//Category Navigation Link
+let categoryNav = document.getElementById("category-nav");
+categoryNav.addEventListener("click", function() {
+  templateLoad("categoriesTemp", categories);
+});
+
+//Tag Navigation Link
 let tagNav = document.getElementById("tag-nav");
 tagNav.addEventListener("click", TagListTempLoad);
 
+//Credit Navigation Link
 let creditsNav = document.getElementById("credits-nav");
 creditsNav.addEventListener("click", creditsTempLoad);
 
-categoryTempLoad();
+//Search box DOM elements and functions
+//let searchButton = document.getElementById("search");
+let textbox = document.getElementById("textbox");
+let searchForm = document.getElementById("search-form");
+//Call back function for search box
+let searchButtonClick = function() {
+  let searchValue = textbox.value.toUpperCase();
+  let resourceList = resources["resource"];
+  let searchList = [];
+  for (var i = 0; i < resourceList.length; i++) {
+    if (
+      resourceList[i]["organization"].toUpperCase().search(searchValue) != -1
+    ) {
+      searchList.push(resourceList[i]);
+    }
+  }
+  if (searchList.length == 1) {
+    let main = contentMain();
+    clearMain();
+    const source = document.getElementById("resourceTemplate").innerHTML;
+    const resourceTemplate = Handlebars.compile(source);
+    const compiledHtml = resourceTemplate(searchList[0]);
+    main.innerHTML = compiledHtml;
+    topFunction();
+  }
+};
+//searchButton.addEventListener("click", searchButtonClick);
+searchForm.addEventListener("submit", searchButtonClick);
+//categoryTempLoad();
+templateLoad("categoriesTemp", categories);
