@@ -254,29 +254,46 @@ let searchButtonClick = function() {
   let searchValue = textbox.value.toUpperCase();
   let resourceList = resources["resource"];
   let searchList = [];
+  let searchResults = {
+    searchTerm: searchValue,
+    searchOption: searchOption,
+    resources: []
+  };
   let multipleResults = { resources: [] };
-  if (searchOption == 1) {
+  if (searchOption == "Resource") {
     for (var i = 0; i < resourceList.length; i++) {
       if (
         resourceList[i]["organization"].toUpperCase().search(searchValue) != -1
       ) {
         searchList.push(resourceList[i]);
+        searchResults["resources"].push(resourceList[i]);
       }
     }
-    if (searchList.length == 1) {
+    console.log(searchResults);
+    if (searchResults["resources"].length == 1) {
       let main = contentMain();
       clearMain();
       const source = document.getElementById("resourceTemplate").innerHTML;
       const resourceTemplate = Handlebars.compile(source);
-      const compiledHtml = resourceTemplate(searchList[0]);
+      const compiledHtml = resourceTemplate(searchResults["resources"][0]);
       main.innerHTML = compiledHtml;
       topFunction();
-    } else {
+    } else if (searchList.length > 1) {
       multipleResults.resources = searchList;
       clearMain();
-      const source = document.getElementById("resourceListPage").innerHTML;
+      const source = document.getElementById("searchResultsTemplate").innerHTML;
       const resourceTemplate = Handlebars.compile(source);
-      const compiledHtml = resourceTemplate(multipleResults);
+      const compiledHtml = resourceTemplate(searchResults);
+      main.innerHTML = compiledHtml;
+      topFunction();
+      resourceClick();
+    } else {
+      console.log("no");
+      let results = { subcategory: "No results found", resources: [] };
+      clearMain();
+      const source = document.getElementById("searchResultsTemplate").innerHTML;
+      const resourceTemplate = Handlebars.compile(source);
+      const compiledHtml = resourceTemplate(searchResults);
       main.innerHTML = compiledHtml;
       topFunction();
     }

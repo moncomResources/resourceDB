@@ -219,6 +219,32 @@
             </div>
       </<section>
     </script>
+    <script id="searchResultsTemplate" type="text/x-handlebars-template">
+      <div class="container my-5">
+      <h1>Results</h1>
+      <h4>Search for <span class="font-weight-bolder">{{searchTerm}}</span> in {{searchOption}}</h4>
+      </div>
+      <div class="row">
+          <div class="col col-lg-2">
+            <img
+              class=""
+              src=""
+              style="width:150px"
+              alt=""
+            />
+          </div>
+          <div class="col col-lg-10" style="background-color: whitesmoke">
+            {{#if resources}}
+            {{#each resources}}
+            <p><a href="#" class="resource-link" id="{{this.id}}">{{this.organization}}</a></p>
+            {{/each}}
+            {{else}}
+            <p>No results found</p>
+            {{/if}}
+
+          </div>
+        </div>
+    </script>
 
     <title>Community Resource Database</title>
   </head>
@@ -262,9 +288,11 @@
                 <div class="form-row align-items-center ml-3">
                   <div class="col-auto">
                     <select class="custom-select mr-sm-2" id="search-select">
-                      <option value="1" selected="selected">Resource</option>
-                      <option value="2">Subcategory</option>
-                      <option value="3">Tag</option>
+                      <option value="Resource" selected="selected"
+                        >Resource</option
+                      >
+                      <option value="Subcategory">Subcategory</option>
+                      <option value="Tag">Tag</option>
                     </select>
                   </div>
                 </div>
