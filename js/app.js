@@ -35,6 +35,30 @@ function findCategoryName(categoryID) {
   return categoryName;
 }
 
+//function to search resources
+let resourceSearch = function() {
+  let searchList = [];
+
+  for (var i = 0; i < resourceList.length; i++) {
+    if (
+      resourceList[i]["organization"].toUpperCase().search(searchValue) != -1
+    ) {
+      searchList.push(resourceList[i]);
+    }
+  }
+  if (searchList.length == 1) {
+    let main = contentMain();
+    clearMain();
+    const source = document.getElementById("resourceTemplate").innerHTML;
+    const resourceTemplate = Handlebars.compile(source);
+    const compiledHtml = resourceTemplate(searchList[0]);
+    main.innerHTML = compiledHtml;
+    topFunction();
+  } else {
+    console.log(searchList);
+  }
+};
+
 //function to load resourcelist template
 let subcategoryLinkClick = function() {
   let categoryIndex = document.getElementById("id-value").innerHTML;
@@ -163,6 +187,7 @@ let templateLoad = function(scriptID, data) {
   //Figure out how to remove this event listener
   categoryButtonListeners();
   topFunction();
+  searchForm.addEventListener("submit", searchButtonClick);
 };
 
 let TagListTempLoad = function() {
@@ -217,32 +242,48 @@ let creditsNav = document.getElementById("credits-nav");
 creditsNav.addEventListener("click", creditsTempLoad);
 
 //Search box DOM elements and functions
-//let searchButton = document.getElementById("search");
+
+let searchButton = document.getElementById("search");
 let textbox = document.getElementById("textbox");
 let searchForm = document.getElementById("search-form");
 //Call back function for search box
 let searchButtonClick = function() {
+  let searchOption = document.getElementById("search-select").options[
+    document.getElementById("search-select").selectedIndex
+  ].value;
   let searchValue = textbox.value.toUpperCase();
   let resourceList = resources["resource"];
   let searchList = [];
-  for (var i = 0; i < resourceList.length; i++) {
-    if (
-      resourceList[i]["organization"].toUpperCase().search(searchValue) != -1
-    ) {
-      searchList.push(resourceList[i]);
+  let multipleResults = { resources: [] };
+  if (searchOption == 1) {
+    for (var i = 0; i < resourceList.length; i++) {
+      if (
+        resourceList[i]["organization"].toUpperCase().search(searchValue) != -1
+      ) {
+        searchList.push(resourceList[i]);
+      }
+    }
+    if (searchList.length == 1) {
+      let main = contentMain();
+      clearMain();
+      const source = document.getElementById("resourceTemplate").innerHTML;
+      const resourceTemplate = Handlebars.compile(source);
+      const compiledHtml = resourceTemplate(searchList[0]);
+      main.innerHTML = compiledHtml;
+      topFunction();
+    } else {
+      multipleResults.resources = searchList;
+      clearMain();
+      const source = document.getElementById("resourceListPage").innerHTML;
+      const resourceTemplate = Handlebars.compile(source);
+      const compiledHtml = resourceTemplate(multipleResults);
+      main.innerHTML = compiledHtml;
+      topFunction();
     }
   }
-  if (searchList.length == 1) {
-    let main = contentMain();
-    clearMain();
-    const source = document.getElementById("resourceTemplate").innerHTML;
-    const resourceTemplate = Handlebars.compile(source);
-    const compiledHtml = resourceTemplate(searchList[0]);
-    main.innerHTML = compiledHtml;
-    topFunction();
-  }
+  console.log(searchOption);
 };
 //searchButton.addEventListener("click", searchButtonClick);
-searchForm.addEventListener("submit", searchButtonClick);
+
 //categoryTempLoad();
 templateLoad("categoriesTemp", categories);
