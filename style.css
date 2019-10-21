@@ -203,6 +203,9 @@ h2 .cat-link {
     width: 60%;
 }
 
+.tag-link {
+    margin-left: 10px
+}
 
 /* Footer */
 .footer {

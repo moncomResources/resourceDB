@@ -4,8 +4,8 @@ var tagList = [];
 for (var i = 0; i < resources.length; i++) {
 
     for (var j = 0; j < resources[i].tags.length; j++) {
-        if (tagList.indexOf(resources[i].tags[j]) == -1) {
-            tagList.push(resources[i].tags[j])
+        if (tagList.indexOf(resources[i].tags[j].toLowerCase()) == -1) {
+            tagList.push(resources[i].tags[j].toLowerCase())
 
         }
     }
@@ -88,14 +88,23 @@ function g(resource) {
             selectedResource = resources[i]
         }
     }
+    console.log(selectedResource)
     var content = "<div><img class='inline-top' src='" + selectedResource.image + "'><div class='inline-top org-info'><h1 class='org-title text-center'>" + selectedResource.organization + "</h1><p>" + selectedResource.description + "</p><p><span class='bold'>Website:</span> <a href='" + selectedResource.website + "' target='_blank'>" + selectedResource.website + "</a></p><p><span class='bold'>Location:</span> " + selectedResource.location + "</p><table><thead><tr><th>Contact Type</th><th>Contact Information</th></tr></thead><tbody>"
     for (var i = 0; i < selectedResource.contact.length; i++) {
         content += "<tr><td>" + selectedResource.contact[i].contactType + "</td><td>" + selectedResource.contact[i].contactInfo + "</td></tr>"
     }
 
-    content += "</tbody></table>"
+    content += "</tbody></table><p><span class='bold'>tags:</span>"
 
-    content += "</div>"
+    if (selectedResource["tags"].length != 0) {
+        for (var i = 0; i < selectedResource["tags"].length - 1; i++) {
+            content += "<a href='#' onclick='tagSearchList(this.id)' class='tag-link' id='" + selectedResource["tags"][i].toLowerCase() + "'>" + selectedResource["tags"][i] + "</a>,"
+        }
+        content += "<a href='#' class='tag-link' onclick='tagSearchList(this.id)' id='" + selectedResource["tags"][i] + "'>" + selectedResource["tags"][selectedResource["tags"].length - 1] + "</a>"
+    } else {
+        content += "  no tags provided"
+    }
+    content += "</p></div>"
     var main = document.getElementById('main');
     main.innerHTML = content;
 }
@@ -140,11 +149,10 @@ function loadSubcat(id) {
 
 
 function tagSearchList(tag) {
-    console.log(tag)
     var resourceList = [];
     for (var i = 0; i < resources.length; i++) {
         for (var j = 0; j < resources[i].tags.length; j++) {
-            if (resources[i].tags[j] == tag) {
+            if (resources[i].tags[j].toLowerCase() == tag) {
                 resourceList.push(resources[i])
             }
         }
@@ -165,11 +173,28 @@ function loadTags() {
     var main = document.getElementById('main');
     var content = "<h2 class='cat-link'>Tags</h2><div class='resource-list'>";
     for (var i = 0; i < tagList.length; i++) {
-        content += "<a href='#' onclick='tagSearchList(this.id)' id='" + tagList[i] + "'>" + tagList[i] + "</a></p>"
+        content += "<a href='#' onclick='tagSearchList(this.id)' id='" + tagList[i].toLowerCase() + "'>" + tagList[i] + "</a></p>"
     }
     content += ",</div>";
     main.innerHTML = content;
 }
+
+
+function loadIndex() {
+    var content = "<h2 class='cat-link'>Resource Index</h2><div class='resource-list'>";
+    console.log('test')
+    var main = document.getElementById('main');
+    for (var i = 0; i < resources.length; i++) {
+        content += "<p><a href='#' onclick='g(this.id)' id='" + resources[i].organization + "'>" + resources[i].organization + "</a></p>"
+
+    }
+    content += "</div>"
+    main.innerHTML = content;
+
+}
+
+
+
 
 function main() {
     loadCategoryPage();
